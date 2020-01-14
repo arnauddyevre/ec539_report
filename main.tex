@@ -124,7 +124,106 @@ Kiyotaki, N., \& Moore, J. (2019). ``Liquidity, business cycles, and monetary po
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 
-\subsection*{Summary of the paper}. This article is an ambitious theoretical exploration of the role of liquidity in explaining asset prices and real quantity comovements. Its central tenet and its main contribution is the introduction of a limit on the resale of assets in the budget constraint of investing entrepreneurs. This buffer in the liquidation potential of entrepreneurs (i) prevents the economy to reach its first best, (ii) \\
+\subsection*{Summary of the paper} This article is an ambitious theoretical exploration of the role of liquidity in explaining asset prices and real quantity co-movements. Its central tenet is the introduction of a limit on the resale of assets in the budget constraint of investing entrepreneurs. In the most interesting case considered by the authors, this liquidity buffer in the liquidation potential of entrepreneurs (i) prevents the economy to reach its first best allocation of capital, (ii) leads entrepreneurs to hold money for no other reason than weathering times when they are illiquid, and (iii) monetary policy of the Quantitative Easing type reduces the impact of illiquidity on entrepreneurs' investment decisions. (\hl{point to be made sharper...}).\\
+
+More precisely, the central bank can exchange equity for money in period of illiquidity shock, and thus boost aggregate investment. 
+
+Liquidity constraints on the funds entrepreneurs can acquire generates a precautionary demand for money. Money does not have value as an asset, yet it is held by agents to finance projects in case their liquidity constraint becomes binding.\\
+
+
+
+\subsection*{Summary of the full model}. Given an aggregate state $\left(K_{t}, Z_{t}, N_{t}^{g}, a_{t}, \phi_{t}\right)$, and an exogenous law of motion for $\left(a_{t}, \phi_{t}\right)$, the model satisfies the following conditions:
+
+\begin{tikzpicture}[node distance=cm, 
+blocklarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=27em},
+blockmed/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=20em},
+block/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=16em},
+blockredlarge/.style ={rectangle, draw=red, fill=white,  text centered, text width=20em},
+blockblue/.style ={rectangle, draw=blue, fill=white,  text centered, text width=16em}]
+%, minimum height=4em
+
+\node (workers) [blocklarge] {\textbf{Workers} (unit mass) \\
+$$\max_{(C_t^w, L_t, N_{t+1}^w, M_{t+1}^w)} E_{t} \left[ \sum_{s=t}^{\infty} \beta^{s-t} U\left(C_{s}^{w}-\frac{\omega}{1+\nu}\left(L_{s}\right)^{1+\gamma}\right) \right]$$ \\
+$$\mathrm{s.t.} \quad C_{t}^{w}+q_{t}\left(N_{t+1}^{w}-\lambda N_{t}^{w}\right)+p_{t}\left(M_{t+1}^{w}-M_{t}^{w}\right)=w_{t} L_{t}+r_{t} N_{t}^{u}$$
+$$ N_{t+1}^{w} \geq\left(1-\phi_{t}\right) \lambda N_{t}^{w} \geq 0 $$
+$$ M_{t+1}^{w} \geq 0 $$
+};
+
+\node (entrepreneurs) [block, below of=workers, yshift=-3.5cm] {\textbf{Entrepreneurs} (unit mass) \\
+$$ \max_{k_t} A_{t} k_{t}^{\gamma} \ell_{t}^{1-\gamma}-w_{t} \ell_{t} -r_{t} k_{t}$$
+};
+
+\node (investing_entrepreneurs) [blocklarge, below of=entrepreneurs, yshift=-3.5cm] {\textbf{Investing Entrepreneurs} \\
+Get investment opportunity with probability $\textcolor{red}{\pi}$
+$$ \max_{c_t, \textcolor{red}{i_t}, k_{t+1}, n_{t+1}, m_{t+1}} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}\right)$$
+$$\mathrm{s.t.} \quad c_{t}+\textcolor{red}{i_{t}}+q_{t}\left(n_{t+1}-\textcolor{red}{i_{t}}-\lambda n_{t}\right)+p_{t}\left(m_{t+1}-m_{t}\right)=r_{t} n$$
+$$ n_{t+1} \geq \textcolor{red}{(1-\theta) i_{t}}+\left(1-\phi_{t}\right) \lambda n_{t}$$
+$$m_{t+1} \geq 0$$
+$$k_{t+1}=\lambda k_{t}+\textcolor{red}{i_{t}}$$ 
+};
+
+\node (storage) [block, right of=workers, xshift=9cm, yshift=-1cm] {\textbf{Storage} \\
+$$\sigma\left(Z_{t+1}\right)=\left(\frac{Z_{t+1}}{\zeta_{0}}\right)^{\zeta}$$ 
+};
+
+\node (policy) [blockmed, right of=investing_entrepreneurs, xshift= 9cm, yshift=1cm] {\textbf{Monetary policy} \\
+$$\frac{N_{t+1}^{g}}{K}=\psi_{a} \frac{a_{t}-a}{a}+\psi_{\phi} \frac{\phi_{t}-\phi}{\phi}$$
+$$\mathrm{s.t.} \quad q_{t}\left(N_{t+1}^{g}-\lambda N_{t}^{g}\right) = r_{t} N_{t}^{g}+\left(\mu_{t}-1\right) B_{t}$$
+$$K_{t+1}=N_{t+1}^{g}+N_{t+1}$$
+};
+
+\draw [arrow] (workers) -- node {$\quad \quad \ell_t^*$}(entrepreneurs)
+
+\end{tikzpicture}
+
+
+
+\subsection*{Position in the literature}. \cite{gertler2016wholesale}.
+
+\subsubsection*{Intuition of the main result}
+
+Monetary policy and storage are like pressure valves. Give intuition for equation (24).
+
+\subsection*{Major comments} An interesting feature of the model is the interaction between asset prices and quantities. Standard RBC models and finance model do not have it.\\
+
+Unlike standard RBC models, KM can generate substantial and long-lived responses in output, consumption, investment and capital utilisation without relying on implausibly large exogenous shocks. The amplification of the shock operates through the binding liquidity constraint \hl{More on this}.\\
+
+Note that in the seminal \cite{kiyotaki1997credit} paper, the asset price moves little after a technology shock: it rises by 0.37\% following a 1\% increase in technology. In comparison, the price of money and the price of equity in \cite{kiyotaki2019liquidity} rise by 1.6 and 0.9\% respectively.\\
+
+Another comment: scale of the liquidity shock. In their numerical exercise (part 3.), the authors use a drop in resaleability of the equity from 20\% to 6\%. More justifications about the specific magnitude of this drop would be helpful. Back-of-the-envelope calculations can help puting these results in perspective: a 20\% \\
+
+Quantitatively, these unorthodox policies amounted to a lot: Federal Reserve (over US\$1.5 trillion) and the Bank of England (over £375 billion). It is worth noting, that when the thought of injecting liquid money into the economy buy buying off illiquid asset was first formulated by Kiyotaki and Moore as part of Moores's 2001 \textit{Clarendon Lectures}, the idea was deeply unconventional \citep{kiyotaki2001liquidity}. The Great Recession has been a spactacular confirmation of their vision.\\
+
+Question the choice of preferences and technology. Are they linear? And if yes would the shock propagate similarly if these preferences were more traditional? \cite{cordoba2004credit} find that under concave preferences, concave technology and collateralised debt, collateral constraints can indeed amplify shocks, but these amplifications are relatively small. Large amplifications can be obtained under implausible parameter values, or worse, the equilibrium is not saddle path. More sensitivity analyses would have been welcomed to address such critiques.\\
+
+The interaction between the asset prices and quantity is an original feature of the model. This can be a powerful mechanism in the transmission of shocks to the broader economy.\\
+
+The policy implications are evident with the hindsight of the Great Recession: the type of assets being traded on the interbank market matters, and their different liquidity (which are exacerbated by crises) can be trigger sever financial and real crises.
+
+\subsection*{Minor comments}
+
+\subsection*{Suggested extension}
+
+I believe the paper would have benefited from a model more directly applicable to monetary policy. Considering the importance of the liquidity channel in explaining important recent crises (Great Recession, the Greek debt crisis), \\
+
+A lack of liquidity. The contagion of the recent financial crisis to the broader real economy. But are these liquidity constraints quantitatively big?
+
+In this respect, a comparison of the model performance to the New Keynesian canon \citep{gali2015monetary} would have helped the reader in assessing the extent of the value added this model brings.\\
+
+More fundamentally, my critique of the paper would be to treat the drop in liquidity as fully endogenous, and the liquidity constraint as fully reduced-form: dose-response? What make the liquidity of some asset change?\\
+
+The model describe clearly the channel through which unorthodox monetary policy can dampen liquidity-induced recessions. Yet the effectiveness of this type of policy is mostly an empirical question. In this respect, I see this article as a first step in understanding the impact of liquidity constraints on asset prices and quantities. More needs to be done to quantify how important this cause of recession is. Its model desperately needs to be backed by some data. \hl{(suggest data extension)}. See \hl{cite} for some empirical explorations.\\
+
+Even in the simplest version of the model, the liquidity constraint amplifies the impact of a productivity shock on aggregate consumption: without the binding liquidity constraint consumption would depend on permanent income rather than current income (see Figure 1 of the paper). But some authors have argued that liquidity constraints are not that powerful of a mechanism in amplifying productivity shocks \citep{cordoba2004credit}. It should be noted that th
+
+While liquidity shortages played a central role in unfolding of the Great Recession, one can wonder if their  liquidity constraints
+
+The model's parsimony is one of its strengths, but I wonder how much interesting heterogeneity is hidden behind the representative agent assumption. A critique of the QE-type policies carried out by the ECB and the Fed after the 2008 crisis was that it surely helped financial institutions and kept the banking system afloat, but it increased the gap between the wealthiest and the poorest.\footnote{Adding heterogenity in previous-period wealth of labour income would however make the model much more complicated. I can understand why the authors kept it so streamlined.}
+am also curious about the distributional aspects 
+
+\subsubsection{Relationship to previous literature}
+
+\subsection*{Relevance to policy debate}
 
 \newpage
 
