@@ -139,51 +139,59 @@ Ultimately, the ambition of the paper is to create an ``LBC''--liquidity busines
 
 \subsection*{Summary of the full model}. Given an aggregate state $\left(K_{t}, Z_{t}, N_{t}^{g}, a_{t}, \phi_{t}\right)$, and an exogenous law of motion for $\left(a_{t}, \phi_{t}\right)$, the model satisfies the following conditions:
 
-\begin{tikzpicture}[node distance=cm, 
+\begin{tikzpicture}[->, node distance=cm, 
 blocklarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=27em},
-blockmed/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=20em},
+blockvlarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=34em},
+blockmed/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=21em},
 block/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=16em},
 blockredlarge/.style ={rectangle, draw=red, fill=white,  text centered, text width=20em},
 blockblue/.style ={rectangle, draw=blue, fill=white,  text centered, text width=16em}]
 %, minimum height=4em
 
-\node (workers) [blocklarge] {\textbf{Workers} (unit mass) \\
+\node (workers) [blockvlarge] {\textbf{Workers} (unit mass) \\
 $$\max_{(C_t^w, L_t, N_{t+1}^w, M_{t+1}^w)} E_{t} \left[ \sum_{s=t}^{\infty} \beta^{s-t} U\left(C_{s}^{w}-\frac{\omega}{1+\nu}\left(L_{s}\right)^{1+\gamma}\right) \right]$$ \\
-$$\mathrm{s.t.} \quad C_{t}^{w}+q_{t}\left(N_{t+1}^{w}-\lambda N_{t}^{w}\right)+p_{t}\left(M_{t+1}^{w}-M_{t}^{w}\right)=w_{t} L_{t}+r_{t} N_{t}^{u}$$
-$$ N_{t+1}^{w} \geq\left(1-\phi_{t}\right) \lambda N_{t}^{w} \geq 0 $$
-$$ M_{t+1}^{w} \geq 0 $$
+$$\mathrm{s.t.} \quad C_{t}^{w}+q_{t} \textcolor{blue}{\underbrace{\left(N_{t+1}^{w}-\lambda N_{t}^{w}\right)}_{= 0 \textrm{ in equilibrium}}}+p_{t}\textcolor{blue}{\underbrace{\left(M_{t+1}^{w}-M_{t}^{w}\right)}_{0}} + \textcolor{ForestGreen}{\underbrace{(\beta z_{t+1} - \sigma z_{t+1})}_{\textrm{storage}}}=w_{t} L_{t}+r_{t} \textcolor{blue}{\underbrace{N_{t}^{w}}_{0}}$$
+$$ N_{t+1}^{w} \textcolor{blue}{=} \left(1-\phi_{t}\right) \lambda N_{t}^{w} \textcolor{blue}{=} 0 $$
+$$ M_{t+1}^{w} \textcolor{blue}{=} 0 $$
 };
 
-\node (entrepreneurs) [block, below of=workers, yshift=-3.5cm] {\textbf{Entrepreneurs} (unit mass) \\
+\node (entrepreneurs) [block, below of=workers, yshift=-4cm] {\textbf{Entrepreneurs} (unit mass) \\
 $$ \max_{\ell_t} A_{t} k_{t}^{\gamma} \ell_{t}^{1-\gamma}-w_{t} \ell_{t} -r_{t} k_{t}$$
 };
 
-\node (investing_entrepreneurs) [blocklarge, below of=entrepreneurs, yshift=-3.5cm] {\textbf{Investing Entrepreneurs} \\
+\node (investing_entrepreneurs) [blocklarge, below of=entrepreneurs, yshift=-3.5cm, xshift=-4.5cm] {\textbf{Investing Entrepreneurs} \\
 Get investment opportunity with probability $\textcolor{red}{\pi}$
-$$ \max_{c_t, \textcolor{red}{i_t}, k_{t+1}, n_{t+1}, m_{t+1}} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}\right)$$
-$$\mathrm{s.t.} \quad c_{t}+\textcolor{red}{i_{t}}+q_{t}\left(n_{t+1}-\textcolor{red}{i_{t}}-\lambda n_{t}\right)+p_{t}\left(m_{t+1}-m_{t}\right)=r_{t} n_t$$
-$$ n_{t+1} \geq \textcolor{red}{(1-\theta) i_{t}}+\left(1-\phi_{t}\right) \lambda n_{t}$$
-$$m_{t+1} \geq 0$$
-$$k_{t+1}=\lambda k_{t}+\textcolor{red}{i_{t}}$$ 
+$$ \max_{c_t^i, \textcolor{red}{i_t}^i, n_{t+1}^i, m_{t+1}^i} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^i\right)$$
+$$\mathrm{s.t.} \quad c_{t}^i+\textcolor{red}{i_{t}^i}+q_{t}\left(n_{t+1}^i-\textcolor{red}{i_{t}^i}-\lambda n_{t}^i\right)+p_{t}\left(m_{t+1}^i-m_{t}^i\right)=r_{t} n_t^i$$
+$$ n_{t+1}^i \geq \textcolor{red}{(1-\theta) i_{t}^i}+\left(1-\phi_{t}\right) \lambda n_{t}^i$$
+$$m_{t+1}^i \geq 0$$
+$$k_{t+1}^i=\lambda k_{t}^i+\textcolor{red}{i_{t}^i}$$ 
 };
 
-\node (storage) [block, right of=workers, xshift=9cm, yshift=-1cm] {\textbf{Storage} \\
-$$\sigma\left(Z_{t+1}\right)=\left(\frac{Z_{t+1}}{\zeta_{0}}\right)^{\zeta}$$ 
+\node (noninvesting_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-3.5cm, xshift=4.5cm] {\textbf{Non-investing Entrepreneurs} \\
+$$ \max_{c_t^s, n_{t+1}^s, m_{t+1}^s} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^s\right)$$
+$$\mathrm{s.t.} \quad c_{t}^s+q_{t}\left(n_{t+1}^s-\lambda n_{t}^s\right)+p_{t}\left(m_{t+1}^s-m_{t}^s\right)=r_{t} n_t^s$$
+$$ n_{t+1}^s \geq \left(1-\phi_{t}\right) \lambda n_{t}^s$$
+$$m_{t+1}^s \geq 0$$
+$$k_{t+1}^s=\lambda k_{t}^s$$ 
 };
 
-\node (policy) [blockmed, right of=investing_entrepreneurs, xshift= 9cm, yshift=1cm] {\textbf{Monetary policy} \\
+\node (policy) [blockmed, below of=investing_entrepreneurs, yshift= -4cm] {\textbf{Monetary policy} \\
 $$\frac{N_{t+1}^{g}}{K}=\psi_{a} \frac{a_{t}-a}{a}+\psi_{\phi} \frac{\phi_{t}-\phi}{\phi}$$
 $$\mathrm{s.t.} \quad q_{t}\left(N_{t+1}^{g}-\lambda N_{t}^{g}\right) = r_{t} N_{t}^{g}+\left(\mu_{t}-1\right) B_{t}$$
 $$K_{t+1}=N_{t+1}^{g}+N_{t+1}$$
 };
 
-%\node at (0,-7) (here) {test};
+\path[every node/.style={font=\sffamily\small}]
+    (entrepreneurs) edge node [right] {} (investing_entrepreneurs)
+    (workers) edge [bend right] node [left] {$\ell_t^*$} (entrepreneurs)
+    (entrepreneurs) edge [bend right] node [left] {$w_t^*$} (workers)
+    %(3) edge node [right] {} (4)
+    %(4) edge[bend right] node [left] {} (1);
 
 %\draw [arrow] (workers) -- node {$\quad \quad \ell_t^*$}(entrepreneurs)
 %\draw [arrow] (entrepreneurs) -- node {$w_t^*$}(workers)
 %\draw [arrow] (entrepreneurs) -- node {}(investing_entrepreneurs)
-
-%\draw [->] (entrepreneurs) to[out=-80, in=-90,looseness=1] (here)    to[out=90,in=80,looseness=1] (workers);
 
 \end{tikzpicture}
 
