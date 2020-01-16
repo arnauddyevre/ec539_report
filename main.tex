@@ -124,28 +124,18 @@ Kiyotaki, N., \& Moore, J. (2019). ``Liquidity, business cycles, and monetary po
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 
-\subsection*{Summary of the paper} This article is an ambitious theoretical exploration of the role of liquidity in explaining asset prices and real quantity co-movements. Its main contribution is the introduction of a limit on the resale of equity in the budget constraint of investing entrepreneurs. In the most interesting case considered by the authors, which they call a ``monetary economy'', this buffer in the liquidation potential of entrepreneurs has \hl{X} important consequences (i) prevents the economy to reach its first best allocation of capital, (ii) leads entrepreneurs to hold precautionary money for no other reason than weathering times when they are illiquid, and (iii) monetary policy of the Quantitative Easing type reduces the impact of illiquidity on entrepreneurs' investment decisions. Two parameters and two types of assets lie at the centre of the model. With regards to parameters, $\theta$ is the share of furure earnings from the new capital an entrepreneur can credibly pledge, and $\phi$ is the share of equity they can convert into investable funds funds. Low $\omega$ and $\phi$ mean tight asset-based borrowing and liquidity constraints, respectively. The important assets are money, which is perfectly liquid but provide a low return, and equity, whose liquidity is determined by $\phi$ and which provide a return $r_t$. \\
-
-The full model has two optimising agents, workers and entrepreneurs, and one rule-based agent, the government. The model is summarised graphically below.\\
-
-
-
-More precisely, the central bank can exchange equity for money in period of illiquidity shock, and thus boost aggregate investment. 
-
-
-Ultimately, the ambition of the paper is to create an ``LBC''--liquidity business cycl--model. 
-
-
+\subsection*{Summary of the paper} This article is an ambitious theoretical exploration of the role of liquidity constraints in explaining asset prices and real quantity co-movements. Its main contribution is the introduction of a limit on the resale of equity in the budget constraint of investing entrepreneurs. The model is able to generate a rich set of (large) responses in capital utilisation, in output and in the price of assets in spite of its simplicity. The most sophisticated environment presented in the paper simply consists of entrepreneurs-investors, entrepreneurs-savers, workers, and a rule-based central banker. Workers consume their wage. Entrepreneur-savers produce outputs but do not have an investment opportunity and lend to entrepreneurs-investors. Entrepreneur-investors liquidate equity and borrow to finance investment opportunities, subject to a liquidity+borrowing constraint. Finally, the central exchanges illiquid equity for liquid equity (=money). I summarise the model graphically below.
 
 \subsection*{Summary of the full model}. Given an aggregate state $\left(K_{t}, Z_{t}, N_{t}^{g}, a_{t}, \phi_{t}\right)$, and an exogenous law of motion for $\left(a_{t}, \phi_{t}\right)$, the model satisfies the following conditions:
 
 \begin{tikzpicture}[->, node distance=cm, 
 blocklarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=27em},
 blockvlarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=34em},
-blockmed/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=21em},
-block/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=16em},
+blockmed/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=22em},
+blockmonetary/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=17em},
+block/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=14em},
 blockredlarge/.style ={rectangle, draw=red, fill=white,  text centered, text width=20em},
-blockblue/.style ={rectangle, draw=blue, fill=white,  text centered, text width=16em}]
+blockblue/.style ={rectangle, rounded corners, draw=blue, fill=white,  text centered, text width=16em}]
 %, minimum height=4em
 
 \node (workers) [blockvlarge] {\textbf{Workers} (unit mass) \\
@@ -159,33 +149,46 @@ $$ M_{t+1}^{w} \textcolor{blue}{=} 0 $$
 $$ \max_{\ell_t} A_{t} k_{t}^{\gamma} \ell_{t}^{1-\gamma}-w_{t} \ell_{t} -r_{t} k_{t}$$
 };
 
-\node (investing_entrepreneurs) [blocklarge, below of=entrepreneurs, yshift=-3.5cm, xshift=-4.5cm] {\textbf{Investing Entrepreneurs} \\
+\node (investing_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-4cm, xshift=-4.7cm] {\textbf{Investing Entrepreneurs} \\
 Get investment opportunity with probability $\textcolor{red}{\pi}$
 $$ \max_{c_t^i, \textcolor{red}{i_t}^i, n_{t+1}^i, m_{t+1}^i} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^i\right)$$
-$$\mathrm{s.t.} \quad c_{t}^i+\textcolor{red}{i_{t}^i}+q_{t}\left(n_{t+1}^i-\textcolor{red}{i_{t}^i}-\lambda n_{t}^i\right)+p_{t}\left(m_{t+1}^i-m_{t}^i\right)=r_{t} n_t^i$$
+$$\mathrm{s.t.} \quad c_{t}^i+\textcolor{red}{i_{t}^i}+q_{t}\left(\Delta n_{t}^i-\textcolor{red}{i_{t}^i}\right)+p_{t}\left(\Delta m_{t}^i\right) + \textcolor{ForestGreen}{\underbrace{(\Delta z_t^i)}_{\textrm{storage}}} =r_{t} n_t^i$$
 $$ n_{t+1}^i \geq \textcolor{red}{(1-\theta) i_{t}^i}+\left(1-\phi_{t}\right) \lambda n_{t}^i$$
 $$m_{t+1}^i \geq 0$$
 $$k_{t+1}^i=\lambda k_{t}^i+\textcolor{red}{i_{t}^i}$$ 
 };
 
-\node (noninvesting_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-3.5cm, xshift=4.5cm] {\textbf{Non-investing Entrepreneurs} \\
+\node (noninvesting_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-4cm, xshift=4.7cm] {\textbf{Non-investing Entrepreneurs} \\
 $$ \max_{c_t^s, n_{t+1}^s, m_{t+1}^s} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^s\right)$$
-$$\mathrm{s.t.} \quad c_{t}^s+q_{t}\left(n_{t+1}^s-\lambda n_{t}^s\right)+p_{t}\left(m_{t+1}^s-m_{t}^s\right)=r_{t} n_t^s$$
+$$\mathrm{s.t.} \quad c_{t}^s+q_{t}\left(\Delta n_{t}^s-\lambda \right)+p_{t}\left(\Delta m_{t}^s\right) + \textcolor{ForestGreen}{\underbrace{(\Delta z_t^s)}_{\textrm{storage}}} =r_{t} n_t^s$$
 $$ n_{t+1}^s \geq \left(1-\phi_{t}\right) \lambda n_{t}^s$$
 $$m_{t+1}^s \geq 0$$
 $$k_{t+1}^s=\lambda k_{t}^s$$ 
 };
 
-\node (policy) [blockmed, below of=investing_entrepreneurs, yshift= -4cm] {\textbf{Monetary policy} \\
+\node (policy) [blockmonetary, below of=investing_entrepreneurs, xshift=2cm , yshift= -5cm] {\textbf{Monetary policy} \\
 $$\frac{N_{t+1}^{g}}{K}=\psi_{a} \frac{a_{t}-a}{a}+\psi_{\phi} \frac{\phi_{t}-\phi}{\phi}$$
-$$\mathrm{s.t.} \quad q_{t}\left(N_{t+1}^{g}-\lambda N_{t}^{g}\right) = r_{t} N_{t}^{g}+\left(\mu_{t}-1\right) B_{t}$$
-$$K_{t+1}=N_{t+1}^{g}+N_{t+1}$$
+$$\mathrm{s.t.} \quad q_{t}\left(\Delta N_{t}^{g}\right) = r_{t} N_{t}^{g}+\left(\mu_{t}-1\right) B_{t}$$
+};
+
+\node (clearing) [blockblue, right of=policy, xshift= 8cm] {\textbf{Market clearing} \\
+Labour: $L_t = \ell_t$ \\
+Goods: $y_t  = C^w_t + c^i_t + c^s_t + i_t^i$\\
+Equity: $n^i_t + n^s_t + N^g_t + N^w_t= K_t$\\
+Money: $m^i_t + m^s_t + M^g_t + M^w_t = M$\\
 };
 
 \path[every node/.style={font=\sffamily\small}]
-    (entrepreneurs) edge node [right] {} (investing_entrepreneurs)
+    (entrepreneurs) edge node [right] {$r_t^*$} (investing_entrepreneurs)
+    (entrepreneurs) edge node [right] {$r_t^*$} (noninvesting_entrepreneurs)
     (workers) edge [bend right] node [left] {$\ell_t^*$} (entrepreneurs)
     (entrepreneurs) edge [bend right] node [left] {$w_t^*$} (workers)
+    (investing_entrepreneurs) edge [bend right] node [below] {$r_t^*$} (noninvesting_entrepreneurs)
+    (noninvesting_entrepreneurs) edge [bend right] node [above] {$n_t^*$} (investing_entrepreneurs)
+    (policy) edge node [right] {$m_t^i$} (investing_entrepreneurs)
+    (investing_entrepreneurs) edge [bend right] node [left] {$n_t^i$} (policy)
+    (policy) edge node [right] {$m_t^s$} (noninvesting_entrepreneurs)
+    (noninvesting_entrepreneurs) edge [bend left] node [left] {$n_t^s$} (policy)
     %(3) edge node [right] {} (4)
     %(4) edge[bend right] node [left] {} (1);
 
@@ -195,6 +198,17 @@ $$K_{t+1}=N_{t+1}^{g}+N_{t+1}$$
 
 \end{tikzpicture}
 
+
+In the most interesting case considered by the authors, which they call a ``monetary economy'', this buffer in the liquidation potential of entrepreneurs has \hl{X} important consequences: it (i) prevents the economy to reach its first best allocation of capital, (ii) leads entrepreneurs to hold precautionary money for no other reason than weathering times when they are illiquid, and (iii) monetary policy of the Quantitative Easing type reduces the impact of illiquidity on entrepreneurs' investment decisions. Two parameters and two types of assets lie at the centre of the model. With regards to parameters, $\theta$ is the share of furure earnings from the new capital an entrepreneur can credibly pledge, and $\phi$ is the share of equity they can convert into investable funds funds. Low $\omega$ and $\phi$ mean tight asset-based borrowing and liquidity constraints, respectively. The important assets are money, which is perfectly liquid but provide a low return, and equity, whose liquidity is determined by $\phi$ and which provide a return $r_t$. \\
+
+
+
+
+
+More precisely, the central bank can exchange equity for money in period of illiquidity shock, and thus boost aggregate investment. 
+
+
+Ultimately, the ambition of the paper is to create an ``LBC''--liquidity business cycl--model.
 
 
 \subsection*{Position in the literature}. \cite{gertler2016wholesale}.
@@ -217,6 +231,8 @@ here $\delta$ would be the maximum share of equity on profit that an entrepreneu
 Models such as \cite{bernanke1989agency} and \cite{kiyotaki1997credit} endogenise financial market frictions faced by actors in the real economy by creating an agency problem between lenders and borrowers. As a borrower's balance sheet deteriorate, their access to external finance becomes limited and they must bear most of the risk of the investment project with internal funds. The twoway interaction between investment and capital on the one hand, and access to credit on the other amplifies credit shocks. With the notable exception of \cite{holmstrom1997financial}, no macro-finance paper had thoroughly studied the theoretical implication of liquidity shortages in the financial sector. \\
 
 \subsubsection*{Modelling the financial sector/endogenising the liquidity constraint} A notable omission of the paper is the absence of the financial sector as optimising agent. Modelling the mechanisms through which liquidity constraints emerge would have been an engaging addition to the paper. Understandably, the shocks that generate a tightening of the liquidity constraint could be many things (a sudden drop in trust in the inter-bank market, or the default of a large bank for instance), yet putting some behavioural structure on how the financial sector would react to these shocks could have painted a more comprehensive picture of liquidity-induced recessions. See \cite{he2013intermediary, angeloni2013capital, gertler2010financial} for recent work doing just this. I would have suggested to include a three-way interaction between workers (depositors), borrowers (firms) and the liquidity constraint (determined by the financial sector). In particular, it would have been nice to endogenise the agency problem created by the emergence of the central bank as a lender of last resort. Liquidity crises could be triggered by banks taking risky positions on the asset side of theuir balance sheet, under the assumption that they would be rescued by the government/the central bank.\\     
+
+\subsubsection{Making sense of the entrepreneur-savers} The funds powering the business opportunities of entrepreneurs-savers come from entrepreneurs who do not have an investment opportunity in a given period. This modelling choice would have deserved more justification as it does not really correspond to what happened in the beginning of the Great Reecession. Wide access to credit among first-time buyers, combined with an ongoing ``savings glut'' from emerging markets and ageing populations seem to be more credible source of funds for companies. The authors could have potentially accommodated this aspect by using overlapping generations for the workers: the first generation consumes its wage, while the second saves.\\ 
 
 Using firm-level data, \cite{chaney2012collateral} find that for every dollar of increase in U.S. firms' real estate value, they are able to increase investment by 6 cents. This effect is even stronger for credit constrained firms. While this transmission channel has been highlighted by \cite{kiyotaki1997credit} already, its calibration to real data gives us a sense of its actual scale. \\
 
