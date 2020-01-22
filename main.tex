@@ -103,14 +103,13 @@
 \maketitle
 
 \begin{center}
-Student number: 201324680
 \end{center}
 
 
 \vspace{12pt}
 
 Referee report of the journal article: \\ 
-Kiyotaki, N., \& Moore, J. (2019). ``Liquidity, business cycles, and monetary policy''. \textit{Journal of Political Economy}, 127(6), 2926-2966.
+\textbf{Kiyotaki, N., \& Moore, J.} (2019). ``Liquidity, business cycles, and monetary policy''. \textit{Journal of Political Economy}, 127(6), 2926-2966.
 
 %% The correct journal style for \specialsection is all uppercase; a known bug
 %% in amsart.cls prevents this, so input must be uppercase until it is fixed.
@@ -124,9 +123,9 @@ Kiyotaki, N., \& Moore, J. (2019). ``Liquidity, business cycles, and monetary po
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 
-\subsection*{Summary of the paper} This article is an ambitious theoretical exploration of the role of liquidity constraints in explaining asset prices and real quantity co-movements. Its main contribution is the introduction of a limit on the resale of equity in the budget constraint of investing entrepreneurs. The model is able to generate a rich set of (large) responses in capital utilisation, in output and in the price of assets in spite of its simplicity. The most sophisticated environment presented in the paper simply consists of entrepreneurs-investors, entrepreneurs-savers, workers, and a rule-based central banker. Workers consume their wage. Entrepreneur-savers produce outputs but do not have an investment opportunity and lend to entrepreneurs-investors. Entrepreneur-investors liquidate equity and borrow to finance investment opportunities, subject to a liquidity+borrowing constraint. Finally, the central exchanges illiquid equity for liquid equity (=money). I summarise the model graphically below.
+\subsection*{Summary of the paper} This article is an ambitious theoretical exploration of how liquidity constraints can explain co-movements in asset prices and real quantities. Its main contribution is the introduction of a limit on the sale of equity in the budget constraint of investing entrepreneurs. The model is able to generate a rich set of (large) responses in capital utilisation, in output and in the price of assets in spite of its simplicity. The most sophisticated environment presented in the paper simply consists of entrepreneurs-investors, entrepreneurs-savers, workers, and a rule-based central banker. Workers consume their wage. Entrepreneur-savers produce outputs, do not have an investment opportunity and lend to entrepreneurs-investors. Entrepreneur-investors liquidate equity and borrow funds from entrepreneur-savers to finance investment opportunities, subject to a liquidity+borrowing constraint. Finally, the central bank exchanges illiquid equity for liquid equity (=money). One may describe their model as ``LBC''--liquidity business cycle. I summarise the model graphically below.
 
-\subsection*{Summary of the full model}. Given an aggregate state $\left(K_{t}, Z_{t}, N_{t}^{g}, a_{t}, \phi_{t}\right)$, and an exogenous law of motion for $\left(a_{t}, \phi_{t}\right)$, the model satisfies the following conditions:
+\subsubsection*{Summary of the full model} Given an aggregate state $\left(K_{t}, Z_{t}, N_{t}^{g}, a_{t}, \phi_{t}\right)$, and an exogenous law of motion for $\left(a_{t}, \phi_{t}\right)$, the model satisfies the following conditions:
 
 \begin{tikzpicture}[->, node distance=cm, 
 blocklarge/.style ={rectangle, rounded corners, draw=black, fill=white,  text centered, text width=27em},
@@ -145,11 +144,11 @@ $$ N_{t+1}^{w} \textcolor{blue}{=} \left(1-\phi_{t}\right) \lambda N_{t}^{w} \te
 $$ M_{t+1}^{w} \textcolor{blue}{=} 0 $$
 };
 
-\node (entrepreneurs) [block, below of=workers, yshift=-4cm] {\textbf{Entrepreneurs} (unit mass) \\
+\node (entrepreneurs) [block, below of=workers, yshift=-3.8cm] {\textbf{Entrepreneurs} (unit mass) \\
 $$ \max_{\ell_t} A_{t} k_{t}^{\gamma} \ell_{t}^{1-\gamma}-w_{t} \ell_{t} -r_{t} k_{t}$$
 };
 
-\node (investing_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-4cm, xshift=-4.7cm] {\textbf{Investing Entrepreneurs} \\
+\node (investing_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-3.8cm, xshift=-4.5cm] {\textbf{Investing Entrepreneurs} \\
 Get investment opportunity with probability $\textcolor{red}{\pi}$
 $$ \max_{c_t^i, \textcolor{red}{i_t}^i, n_{t+1}^i, m_{t+1}^i} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^i\right)$$
 $$\mathrm{s.t.} \quad c_{t}^i+\textcolor{red}{i_{t}^i}+q_{t}\left(\Delta n_{t}^i-\textcolor{red}{i_{t}^i}\right)+p_{t}\left(\Delta m_{t}^i\right) + \textcolor{ForestGreen}{\underbrace{(\Delta z_t^i)}_{\textrm{storage}}} =r_{t} n_t^i$$
@@ -158,7 +157,7 @@ $$m_{t+1}^i \geq 0$$
 $$k_{t+1}^i=\lambda k_{t}^i+\textcolor{red}{i_{t}^i}$$ 
 };
 
-\node (noninvesting_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-4cm, xshift=4.7cm] {\textbf{Non-investing Entrepreneurs} \\
+\node (noninvesting_entrepreneurs) [blockmed, below of=entrepreneurs, yshift=-3.8cm, xshift=4.5cm] {\textbf{Non-investing Entrepreneurs} \\
 $$ \max_{c_t^s, n_{t+1}^s, m_{t+1}^s} E_{t} \sum_{s=t}^{\infty} \beta^{s-t} u\left(c_{s}^s\right)$$
 $$\mathrm{s.t.} \quad c_{t}^s+q_{t}\left(\Delta n_{t}^s-\lambda \right)+p_{t}\left(\Delta m_{t}^s\right) + \textcolor{ForestGreen}{\underbrace{(\Delta z_t^s)}_{\textrm{storage}}} =r_{t} n_t^s$$
 $$ n_{t+1}^s \geq \left(1-\phi_{t}\right) \lambda n_{t}^s$$
@@ -166,29 +165,32 @@ $$m_{t+1}^s \geq 0$$
 $$k_{t+1}^s=\lambda k_{t}^s$$ 
 };
 
-\node (policy) [blockmonetary, below of=investing_entrepreneurs, xshift=2cm , yshift= -5cm] {\textbf{Monetary policy} \\
+\node (policy) [blockmonetary, below of=investing_entrepreneurs, xshift=2cm , yshift= -4.5cm] {\textbf{Monetary policy} \\
 $$\frac{N_{t+1}^{g}}{K}=\psi_{a} \frac{a_{t}-a}{a}+\psi_{\phi} \frac{\phi_{t}-\phi}{\phi}$$
-$$\mathrm{s.t.} \quad q_{t}\left(\Delta N_{t}^{g}\right) = r_{t} N_{t}^{g}+\left(\mu_{t}-1\right) B_{t}$$
+$$\mathrm{s.t.} \quad q_{t}\left(\Delta N_{t}^{g}\right) = r_{t} N_{t}^{g}+ p_t (M_{t+1} - M_t)$$
 };
 
 \node (clearing) [blockblue, right of=policy, xshift= 8cm] {\textbf{Market clearing} \\
 Labour: $L_t = \ell_t$ \\
-Goods: $y_t  = C^w_t + c^i_t + c^s_t + i_t^i$\\
+Goods: $y_t  = C^w_t + c^i_t + c^s_t + i_t^i + Z_t$\\
 Equity: $n^i_t + n^s_t + N^g_t + N^w_t= K_t$\\
-Money: $m^i_t + m^s_t + M^g_t + M^w_t = M$\\
+Money: $m^i_t + m^s_t + M^g_t + M^w_t = M_t$\\
 };
 
 \path[every node/.style={font=\sffamily\small}]
     (entrepreneurs) edge node [right] {$r_t^*$} (investing_entrepreneurs)
     (entrepreneurs) edge node [right] {$r_t^*$} (noninvesting_entrepreneurs)
-    (workers) edge [bend right] node [left] {$\ell_t^*$} (entrepreneurs)
+    (workers) edge [bend right] node [left] {$\ell_t$} (entrepreneurs)
     (entrepreneurs) edge [bend right] node [left] {$w_t^*$} (workers)
-    (investing_entrepreneurs) edge [bend right] node [below] {$r_t^*$} (noninvesting_entrepreneurs)
-    (noninvesting_entrepreneurs) edge [bend right] node [above] {$n_t^*$} (investing_entrepreneurs)
-    (policy) edge node [right] {$m_t^i$} (investing_entrepreneurs)
-    (investing_entrepreneurs) edge [bend right] node [left] {$n_t^i$} (policy)
-    (policy) edge node [right] {$m_t^s$} (noninvesting_entrepreneurs)
-    (noninvesting_entrepreneurs) edge [bend left] node [left] {$n_t^s$} (policy)
+    (noninvesting_entrepreneurs) edge [bend right] node [below] {$q_t^*$} (investing_entrepreneurs)
+    (noninvesting_entrepreneurs) edge [bend right=20] node [below] {$p_t^*$} (investing_entrepreneurs)
+    (investing_entrepreneurs) edge [bend right] node [above] {$n_t$} (noninvesting_entrepreneurs)
+    (investing_entrepreneurs) edge [bend right=20] node [above] {$m_t$} (noninvesting_entrepreneurs)
+    (policy) edge node [left] {CB exchanges $m_t^i$ for $n_t^i$} (investing_entrepreneurs)
+    (investing_entrepreneurs) edge node [right] {(at market prices)} (policy)
+    (noninvesting_entrepreneurs) edge node [right] {CB exchanges $m_t^s$ for $n_t^s$ (at market prices)} (policy)
+    (policy) edge node [right] {} (noninvesting_entrepreneurs)
+
     %(3) edge node [right] {} (4)
     %(4) edge[bend right] node [left] {} (1);
 
@@ -199,77 +201,59 @@ Money: $m^i_t + m^s_t + M^g_t + M^w_t = M$\\
 \end{tikzpicture}
 
 
-In the most interesting case considered by the authors, which they call a ``monetary economy'', this buffer in the liquidation potential of entrepreneurs has \hl{X} important consequences: it (i) prevents the economy to reach its first best allocation of capital, (ii) leads entrepreneurs to hold precautionary money for no other reason than weathering times when they are illiquid, and (iii) monetary policy of the Quantitative Easing type reduces the impact of illiquidity on entrepreneurs' investment decisions. Two parameters and two types of assets lie at the centre of the model. With regards to parameters, $\theta$ is the share of furure earnings from the new capital an entrepreneur can credibly pledge, and $\phi$ is the share of equity they can convert into investable funds funds. Low $\omega$ and $\phi$ mean tight asset-based borrowing and liquidity constraints, respectively. The important assets are money, which is perfectly liquid but provide a low return, and equity, whose liquidity is determined by $\phi$ and which provide a return $r_t$. \\
+\subsubsection*{Main takeaways} In a ``monetary economy'' described above, the liquidity constraint has five important consequences: (i) it prevents the economy to reach its first best allocation of capital, (ii) there is a gradient of rates of return,\footnote{Money provides a higher return than  equity if one has an investment opportunity next period, but less if one does not.} (iii) it leads entrepreneurs to hold precautionary money for no other reason than weathering times when they are illiquid, (iv) a cheap storage technology will divert resources away from capital investment, and (v) monetary policy of the Quantitative Easing type reduces the impact of an illiquidity shock on consumption, investment, output, and the price of equity.\\
 
+Two parameters and two types of assets lie at the heart of the model. With regards to parameters; $\theta$ is the share of future earnings from the new capital an entrepreneur can credibly pledge, and $\phi$ is the share of equity they can convert into investable funds. Low $\theta$ and $\phi$ mean tight asset-based borrowing and liquidity constraints, respectively. The important assets are money, which is liquid but provide a low return, and equity, whose liquidity is determined by $\phi$ and which provides a return $r_t$. \\
 
+The authors provide numerical examples of dynamic impulse responses to liquidity and productivity shocks. They compare models without storage or monetary policy to the full model.\\
 
+\subsection*{Major comments} 
 
+\subsubsection*{Theoretical relevance} The paper is an important effort to explicitly include liquidity constraints in a business cycle model. Until the Great Recession, most RBC models ignored the impact of liquidity constraints on aggregate economic activity \citep{gertler2010financial}. The traditional approach to credit friction has been to model entrepreneurs as being able to credibly pledge only a limited share of their future gains, or to collateralise only part of their current capital. For instance, canonical models such as \cite{bernanke1989agency} and \cite{kiyotaki1997credit} endogenise financial market frictions faced by actors in the real economy by creating an agency problem between lenders and borrowers. As a borrower's balance sheet deteriorates, their access to external finance becomes limited and they must bear most of the risk of the investment project with internal funds. The two-way interaction between investment and capital on the one hand, and access to credit on the other amplifies credit shocks. With the notable exception of \cite{holmstrom1997financial}, no macro-finance paper had thoroughly studied the theoretical implication of liquidity shortages in the financial sector before this one.\\
 
-More precisely, the central bank can exchange equity for money in period of illiquidity shock, and thus boost aggregate investment. 
+Its second notable theoretical contribution is to generate substantial and long-lived responses in output, consumption, investment, equity price and capital utilisation without relying on implausibly large exogenous shocks like standard RBC models. In the seminal \cite{kiyotaki1997credit} paper, the asset price moves little after a technology shock: it rises by 0.37\% following a 1\% increase in productivity. In comparison, the price of money and the price of equity in \cite{kiyotaki2019liquidity} rise by 1.6 and 0.9\% respectively after the same shock. The liquidity constraint also plays a key role in generating large response in consumption. without it binding, consumption would depend on permanent income rather than current income.\\
 
+\subsubsection*{Need for justifications of some modelling choices} However, while the responses to shocks are large, some authors have stressed that the choices of functional forms for utility and production matter a great deal to determine the magnitude of these responses. \cite{cordoba2004credit}, for instance, find that under concave preferences, concave technology and collateralised debt, borrowing constraints can indeed amplify shocks, but these amplifications are relatively small. Large amplifications can be obtained under implausible parameter values, or worse, the equilibrium is not saddle path. More sensitivity analyses would have been welcome to assess wether these criticisms apply to liquidity constraints as well.\\
 
-Ultimately, the ambition of the paper is to create an ``LBC''--liquidity business cycl--model.
+Lastly, more justification about the specific magnitude of the drop in liquidity in the numerical exercise would have been helpful. The authors use a drop in resaleability of equity from 20\% to 6\%.  It is hard for the reader to know if this drop is large or small. Back-of-the-envelope calculations can help putting these results in perspective: a 20\% resaleability constraints means that it takes 3.1 quarters for an entrepreneur to liquidate half of their equity (conditional on them having investment opportunties in every period). It takes 11.2 quarters when $\phi = 0.06$ instead. As this seems to be a very long period for liquidation (longer than the Great Recession in the U.S.), some comparison with real data would have helped to put this number in context.\\
 
+\subsubsection*{Empirical/policy relevance} Quantitatively, the unorthodox policies carried out by Central Banks in Europe, America and England in the wake of the 2008 crisis amounted to a lot of liquidities. The Fed for instance added US\$1.5 trillion worth of assets to its balance sheet in early 2009 (see Figure \ref{fig:fedsheet}). In this respect, having a clear theoretical understanding of how new liquidity helped keep the financial sector afloat is paramount. It is worth noting, that when the thought of injecting money into the economy by buying off illiquid asset was first formulated by Kiyotaki and Moore as part of Moores's 2001 \textit{Clarendon Lectures}, the idea was deeply unconventional \citep{kiyotaki2001liquidity}. The Great Recession has been a spectacular confirmation of their vision. The policy implications are evident with the hindsight of the Great Recession: the liquidity of assets being traded by banks matter, and fluctuations in liquidity may trigger economic recessions.\\
 
-\subsection*{Position in the literature}. \cite{gertler2016wholesale}.
+\subsubsection*{Modelling the financial sector/endogenising the liquidity constraint} A notable omission of the paper is the absence of the financial sector as an optimising agent. In Kiyotaki and Moore's model, the liquidity shock is simply an exogenous Markov process $\lambda_t$. Modelling the mechanisms through which liquidity constraints emerge would have been an engaging addition to the paper. This would understandably complicate the model as the shocks generating tighter liquidity constraints could take multiple forms; a sudden drop in trust in the inter-bank market, the removal of a particular class of assets from the market, or regulatory changes for instance. Modelling liquidity contractions as a stochastic risk allows them to remain agnostic about their origin. Yet, putting some behavioural structure on how the financial sector would react to these underlying shocks could have painted a more comprehensive picture of liquidity-induced recessions. See \cite{he2013intermediary, angeloni2013capital, gertler2010financial} for recent work doing just this.
 
-\subsubsection*{Intuition of the main result}
+%A related point In particular, it would have been nice to endogenise the agency problem created by the emergence of the central bank as a lender of last resort. Liquidity crises could be triggered by banks taking risky positions on the asset side of theuir balance sheet, under the assumption that they would be rescued by the government/the central bank.\\
 
-Monetary policy and storage are like pressure valves. Give intuition for equation (24).
-
-\subsection*{Major comments} An interesting feature of the model is the interaction between asset prices and quantities. Standard RBC models and finance model do not have it.\\
-
-\subsubsection{Putting the research in context} Until the Great Recession, most macroeconomic models treated financial constraints as being the problem of firms in the real economy only \citep{gertler2010financial}, and largely ignored the impact of liquidity constraints on economic activity. Furthermore, the Fed, the ECB, the Bank of England and many other large central banks engaged in unconventional policies that involved some form of direct lending in credit markets. The policy channel modelled by the authors is a direct theoretical counterpart to the Fed's expansion of the discount window loans, the Troubled Asset Relief Program, and the emergency loans to J.P. Morgan Chase (who absorbed Bear Stearns) and AIG.\\
-
-Unlike standard RBC models, KM can generate substantial and long-lived responses in output, consumption, investment and capital utilisation without relying on implausibly large exogenous shocks. The amplification of the shock operates through the binding liquidity constraint \hl{More on this}.\\
-
-Note that in the seminal \cite{kiyotaki1997credit} paper, the asset price moves little after a technology shock: it rises by 0.37\% following a 1\% increase in technology. In comparison, the price of money and the price of equity in \cite{kiyotaki2019liquidity} rise by 1.6 and 0.9\% respectively.\\
-
-In general, DSGE models with credit constrained households manage to explain co-movements between house prices and consumption expenditures. But they have a hard time delivering co-movement between land prices and business investment \citep{iacoviello2010housing}. KM delivers this by assuming that entrepreneurs--rather than households/workers--are credit constrained, as \cite{liu2013land} do. The causal channel in both models is: a positive shock to land price raises firms' borrowing capacity, which in turns facilitates an expansion in investment and production. While this channel intuitively makes sense, the empirical study of \cite{lian2019anatomy} suggests that 83\% of large U.S. firms' corporate debt is based on cash flow from their operations (80\% in aggregate). It would thus have been helpful to show how important cash-flow-based debt is in Kiyotaki and Moore's model, compared to the liquidity and the investment-based (=future asset-based) borrowing constraints. One can think of a modified version of constraint (5) in their paper: $$n_{t+1} \geq(1-\theta) i_{t}+\left(1-\phi_{t}\right) \lambda n_{t} + (1-\delta)(y_t - w_t \ell_t) $$  \\
-here $\delta$ would be the maximum share of equity on profit that an entrepreneur could issue.\\
-
-Models such as \cite{bernanke1989agency} and \cite{kiyotaki1997credit} endogenise financial market frictions faced by actors in the real economy by creating an agency problem between lenders and borrowers. As a borrower's balance sheet deteriorate, their access to external finance becomes limited and they must bear most of the risk of the investment project with internal funds. The twoway interaction between investment and capital on the one hand, and access to credit on the other amplifies credit shocks. With the notable exception of \cite{holmstrom1997financial}, no macro-finance paper had thoroughly studied the theoretical implication of liquidity shortages in the financial sector. \\
-
-\subsubsection*{Modelling the financial sector/endogenising the liquidity constraint} A notable omission of the paper is the absence of the financial sector as optimising agent. Modelling the mechanisms through which liquidity constraints emerge would have been an engaging addition to the paper. Understandably, the shocks that generate a tightening of the liquidity constraint could be many things (a sudden drop in trust in the inter-bank market, or the default of a large bank for instance), yet putting some behavioural structure on how the financial sector would react to these shocks could have painted a more comprehensive picture of liquidity-induced recessions. See \cite{he2013intermediary, angeloni2013capital, gertler2010financial} for recent work doing just this. I would have suggested to include a three-way interaction between workers (depositors), borrowers (firms) and the liquidity constraint (determined by the financial sector). In particular, it would have been nice to endogenise the agency problem created by the emergence of the central bank as a lender of last resort. Liquidity crises could be triggered by banks taking risky positions on the asset side of theuir balance sheet, under the assumption that they would be rescued by the government/the central bank.\\     
-
-\subsubsection{Making sense of the entrepreneur-savers} The funds powering the business opportunities of entrepreneurs-savers come from entrepreneurs who do not have an investment opportunity in a given period. This modelling choice would have deserved more justification as it does not really correspond to what happened in the beginning of the Great Reecession. Wide access to credit among first-time buyers, combined with an ongoing ``savings glut'' from emerging markets and ageing populations seem to be more credible source of funds for companies. The authors could have potentially accommodated this aspect by using overlapping generations for the workers: the first generation consumes its wage, while the second saves.\\ 
-
-Using firm-level data, \cite{chaney2012collateral} find that for every dollar of increase in U.S. firms' real estate value, they are able to increase investment by 6 cents. This effect is even stronger for credit constrained firms. While this transmission channel has been highlighted by \cite{kiyotaki1997credit} already, its calibration to real data gives us a sense of its actual scale. \\
-
-An important point for this type of research is to document which channel was the most important, liquidity constraints as suggested by this paper, or a more direct link between the housing market and business investment? Or maybe in which way did the interaction of the two lead to the crisis?\\
-
-Another comment: scale of the liquidity shock. In their numerical exercise (part 3.), the authors use a drop in resaleability of the equity from 20\% to 6\%. More justifications about the specific magnitude of this drop would be helpful. Back-of-the-envelope calculations can help puting these results in perspective: a 20\% \\
-
-Quantitatively, these unorthodox policies amounted to a lot: Federal Reserve (over US\$1.5 trillion, see Figure \ref{fig:fedsheet}) and the Bank of England (over £375 billion). It is worth noting, that when the thought of injecting liquid money into the economy buy buying off illiquid asset was first formulated by Kiyotaki and Moore as part of Moores's 2001 \textit{Clarendon Lectures}, the idea was deeply unconventional \citep{kiyotaki2001liquidity}. The Great Recession has been a spactacular confirmation of their vision.\\
-
-Question the choice of preferences and technology. Are they linear? And if yes would the shock propagate similarly if these preferences were more traditional? \cite{cordoba2004credit} find that under concave preferences, concave technology and collateralised debt, collateral constraints can indeed amplify shocks, but these amplifications are relatively small. Large amplifications can be obtained under implausible parameter values, or worse, the equilibrium is not saddle path. More sensitivity analyses would have been welcomed to address such critiques.\\
-
-The large interaction between the asset prices and quantity is an original feature of the model. This can be a powerful mechanism in the transmission of shocks to the broader economy.\\
-
-The policy implications are evident with the hindsight of the Great Recession: the type of assets being traded on the inter-bank market matters, and their different liquidity (which are exacerbated by crises) can be trigger sever financial and real crises.
-
-A lack of liquidity. The contagion of the recent financial crisis to the broader real economy. But are these liquidity constraints quantitatively big? \cite{liu2013land} have developed a DSGE model with land as a collateral asset and shocks driving most of the fluctuation in land prices. Their model is motivated by the fact that business investment dropped in tandem with land prices in the U.S. at the onset of the Great Recession.
-
+%More fundamentally, my critique of the paper would be to treat the drop in liquidity as fully endogenous, and the liquidity constraint as fully reduced-form: dose-response? What make the liquidity of some asset change?\\
 \subsection*{Minor comments}
+
+\subsubsection*{Making sense of the entrepreneur-savers} While the model is impressive in capturing many aspects of the last economic crisis, the assumption that funds used by entrepreneurs-investors come from entrepreneurs who do not have an investment opportunity would have deserved more justification. It does not seem to fit in with the way corporate credit works. A more credible assumption would have been to make workers lend to firms, as depositors. The authors could have accommodated this aspect by using overlapping generations for the workers: the first generation consumes its wage, while the second saves. Here again, modelling the endogenous response of the financial sector to the supply of funds could have helped. \\ 
+
+\subsubsection*{Distributional consequences of QE} The model's parsimony is one of its strengths, but I wonder how much interesting heterogeneity is hidden behind the representative agent assumption. A critique of the QE-type policies carried out by the ECB and the Fed after the 2008 crisis was that it surely helped financial institutions and kept the banking system afloat, but it also increased the gap between the wealthiest and the poorest.\footnote{Adding heterogenity in previous-period wealth of labour income would however make the model much more complicated. I can understand why the authors kept it so streamlined.}
+
+%Furthermore, the Fed, the ECB, the Bank of England and many other large central banks engaged in unconventional policies that involved some form of direct lending in credit markets. The policy channel modelled by the authors is a direct theoretical counterpart to the Fed's expansion of the discount window loans, the Troubled Asset Relief Program, and the emergency loans to J.P. Morgan Chase (who absorbed Bear Stearns) and AIG.\\
+
+%\subsubsection*{Obtaining a quantitatively large response in numerical simulations} Question the choice of preferences and technology. Are they linear? And if yes would the shock propagate similarly if these preferences were more traditional? 
+
+%Even in the simplest version of the model, the liquidity constraint amplifies the impact of a productivity shock on aggregate consumption: without the binding liquidity constraint consumption would depend on permanent income rather than current income (see Figure 1 of the paper). But some authors have argued that liquidity constraints are not that powerful of a mechanism in amplifying productivity shocks \citep{cordoba2004credit}. It should be noted that th \\
+
 
 \subsection*{Suggested extension}
 
-I believe the paper would have benefited from a model more directly applicable to monetary policy. Considering the importance of the liquidity channel in explaining important recent crises (Great Recession, the Greek debt crisis), \\
+\subsubsection*{Benchmarking}
+I believe the paper would have benefited from a model more directly applicable to monetary policy. Considering the importance of the liquidity channel in explaining important recent crises (Great Recession, the Greek debt crisis), a comparison of the model performance with that of the the New Keynesian canon \citep{gali2015monetary} would have helped the reader to assess its merits.\\
 
-In this respect, a comparison of the model performance to the New Keynesian canon \citep{gali2015monetary} would have helped the reader in assessing the extent of the value added this model brings.\\
+%A lack of liquidity. The contagion of the recent financial crisis to the broader real economy. But are these liquidity constraints quantitatively big? \cite{liu2013land} have developed a DSGE model with land as a collateral asset and shocks driving most of the fluctuation in land prices. Their model is motivated by the fact that business investment dropped in tandem with land prices in the U.S. at the onset of the Great Recession.\\
 
-More fundamentally, my critique of the paper would be to treat the drop in liquidity as fully endogenous, and the liquidity constraint as fully reduced-form: dose-response? What make the liquidity of some asset change?\\
+The model clearly describes the channel through which unorthodox monetary policy can dampen illiquidity-induced recessions. Yet the effectiveness of this type of policy is mostly an empirical question. In this respect, I see this article as a first step in understanding the impact of liquidity constraints on asset prices and quantities. More needs to be done to quantify how important this cause of recession is. \cite{del2017great} and co-authors have done such work, it would be interesting to see more emprical confirmation of Kiyotaki and Moore's framework. \\
 
-The model describe clearly the channel through which unorthodox monetary policy can dampen liquidity-induced recessions. Yet the effectiveness of this type of policy is mostly an empirical question. In this respect, I see this article as a first step in understanding the impact of liquidity constraints on asset prices and quantities. More needs to be done to quantify how important this cause of recession is. Its model desperately needs to be backed by some data. \hl{(suggest data extension)}. See \hl{cite} for some empirical explorations.\\
 
-Even in the simplest version of the model, the liquidity constraint amplifies the impact of a productivity shock on aggregate consumption: without the binding liquidity constraint consumption would depend on permanent income rather than current income (see Figure 1 of the paper). But some authors have argued that liquidity constraints are not that powerful of a mechanism in amplifying productivity shocks \citep{cordoba2004credit}. It should be noted that th \\
+%\textbf{see if possible to include this...}
+%Secondly, In general, DSGE models with credit constrained households manage to explain co-movements between house prices and consumption expenditures. But they have a hard time delivering co-movement between land prices and business investment \citep{iacoviello2010housing}. KM delivers this by assuming that entrepreneurs--rather than households/workers--are credit constrained. See \cite{liu2013land} for . The causal channel in both models is: a positive shock to land price raises firms' borrowing capacity, which in turns facilitates an expansion in investment and production. While this channel intuitively makes sense, the empirical study of \cite{lian2019anatomy} suggests that 83\% of large U.S. firms' corporate debt is based on cash flow from their operations (80\% in aggregate). It would thus have been helpful to show how important cash-flow-based debt is in Kiyotaki and Moore's model, compared to the liquidity and the investment-based (=future asset-based) borrowing constraints. One can think of a modified version of constraint (5) in their paper: $$n_{t+1} \geq(1-\theta) i_{t}+\left(1-\phi_{t}\right) \lambda n_{t} + (1-\delta)(y_t - w_t \ell_t) $$  \\
+%here $\delta$ would be the maximum share of equity on profit that an entrepreneur could issue.\\
 
-The model's parsimony is one of its strengths, but I wonder how much interesting heterogeneity is hidden behind the representative agent assumption. A critique of the QE-type policies carried out by the ECB and the Fed after the 2008 crisis was that it surely helped financial institutions and kept the banking system afloat, but it increased the gap between the wealthiest and the poorest.\footnote{Adding heterogenity in previous-period wealth of labour income would however make the model much more complicated. I can understand why the authors kept it so streamlined.}
-am also curious about the distributional aspects 
+%Using firm-level data, \cite{chaney2012collateral} find that for every dollar of increase in U.S. firms' real estate value, they are able to increase investment by 6 cents. This effect is even stronger for credit constrained firms. While this transmission channel has been highlighted by \cite{kiyotaki1997credit} already, its calibration to real data gives us a sense of its actual scale. \\
 
-\subsubsection{Relationship to previous literature}
-
-\subsection*{Relevance to policy debate}
+%An important point for this type of research is to document which channel was the most important, liquidity constraints as suggested by this paper, or a more direct link between the housing market and business investment? Or maybe in which way did the interaction of the two lead to the crisis?\\
 
 \newpage
 
@@ -280,14 +264,14 @@ am also curious about the distributional aspects
 
 \section*{Appendix}
 
-\begin{figure}[h!]
-    \centering
-    \begin{tabular}{c}
-        \includegraphics[width=0.8 \textwidth]{landpriceinvestment.JPG}
-    \end{tabular}
-    \caption{Real land price and investment (both in logs). Shaded areas are the NBER recession dates. Figure 1. from \cite{liu2013land}.}
-    \label{fig:landpriceinvestment}
-\end{figure}
+%\begin{figure}[h!]
+%    \centering
+%    \begin{tabular}{c}
+%        \includegraphics[width=0.8 \textwidth]{landpriceinvestment.JPG}
+%    \end{tabular}
+%    \caption{Real land price and investment (both in logs). Shaded areas are the NBER recession dates. Figure 1. from \cite{liu2013land}.}
+%    \label{fig:landpriceinvestment}
+%\end{figure}
 
 \begin{figure}[h!]
     \centering
